@@ -1,4 +1,11 @@
-// Появление элементов при скролле
+// Мобильное меню
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('nav ul');
+menuToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('show');
+});
+
+// Анимации появления при скролле
 const faders = document.querySelectorAll('.fade-in');
 const appearOptions = { threshold: 0.2 };
 const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -11,30 +18,27 @@ const appearOnScroll = new IntersectionObserver((entries, observer) => {
 }, appearOptions);
 faders.forEach(fader => appearOnScroll.observe(fader));
 
-// Карусели (несколько секций)
+// Карусели
 document.querySelectorAll('.carousel').forEach(carousel => {
   const track = carousel.querySelector('.carousel-track');
   const items = carousel.querySelectorAll('.carousel-item');
   const prevBtn = carousel.querySelector('.prev');
   const nextBtn = carousel.querySelector('.next');
   let index = 0;
-
   function updateCarousel() {
     track.style.transform = `translateX(${-index * 100}%)`;
   }
-
   nextBtn.addEventListener('click', () => {
     index = (index + 1) % items.length;
     updateCarousel();
   });
-
   prevBtn.addEventListener('click', () => {
     index = (index - 1 + items.length) % items.length;
     updateCarousel();
   });
 });
 
-// Лайтбокс для галереи
+// Лайтбокс
 const galleryImages = document.querySelectorAll('.gallery img');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.querySelector('.lightbox-img');
@@ -43,7 +47,6 @@ const prevLightbox = document.querySelector('.lightbox .prev');
 const nextLightbox = document.querySelector('.lightbox .next');
 
 let currentIndex = 0;
-
 function showLightbox(index) {
   lightbox.style.display = 'flex';
   lightboxImg.src = galleryImages[index].src;
