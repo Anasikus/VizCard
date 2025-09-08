@@ -1,13 +1,19 @@
 // Мобильное меню
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('nav ul');
+const navLinks = document.querySelectorAll('nav ul li a');
+
 menuToggle.addEventListener('click', () => {
   navMenu.classList.toggle('show');
 });
 
+// Закрытие меню при клике на ссылку
+navLinks.forEach(link => {
+  link.addEventListener('click', () => navMenu.classList.remove('show'));
+});
+
 // Анимации появления при скролле
 const faders = document.querySelectorAll('.fade-in');
-const appearOptions = { threshold: 0.2 };
 const appearOnScroll = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -15,10 +21,10 @@ const appearOnScroll = new IntersectionObserver((entries, observer) => {
       observer.unobserve(entry.target);
     }
   });
-}, appearOptions);
+}, { threshold: 0.2 });
 faders.forEach(fader => appearOnScroll.observe(fader));
 
-// Карусели
+// Карусель
 document.querySelectorAll('.carousel').forEach(carousel => {
   const track = carousel.querySelector('.carousel-track');
   const items = carousel.querySelectorAll('.carousel-item');
@@ -28,14 +34,8 @@ document.querySelectorAll('.carousel').forEach(carousel => {
   function updateCarousel() {
     track.style.transform = `translateX(${-index * 100}%)`;
   }
-  nextBtn.addEventListener('click', () => {
-    index = (index + 1) % items.length;
-    updateCarousel();
-  });
-  prevBtn.addEventListener('click', () => {
-    index = (index - 1 + items.length) % items.length;
-    updateCarousel();
-  });
+  nextBtn.addEventListener('click', () => { index = (index + 1) % items.length; updateCarousel(); });
+  prevBtn.addEventListener('click', () => { index = (index - 1 + items.length) % items.length; updateCarousel(); });
 });
 
 // Лайтбокс
@@ -45,22 +45,14 @@ const lightboxImg = document.querySelector('.lightbox-img');
 const closeBtn = document.querySelector('.close');
 const prevLightbox = document.querySelector('.lightbox .prev');
 const nextLightbox = document.querySelector('.lightbox .next');
-
 let currentIndex = 0;
+
 function showLightbox(index) {
   lightbox.style.display = 'flex';
   lightboxImg.src = galleryImages[index].src;
   currentIndex = index;
 }
-galleryImages.forEach((img,i) => {
-  img.addEventListener('click', () => showLightbox(i));
-});
+galleryImages.forEach((img,i) => img.addEventListener('click', () => showLightbox(i)));
 closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
-prevLightbox.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-  showLightbox(currentIndex);
-});
-nextLightbox.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % galleryImages.length;
-  showLightbox(currentIndex);
-});
+prevLightbox.addEventListener('click', () => showLightbox((currentIndex - 1 + galleryImages.length) % galleryImages.length));
+nextLightbox.addEventListener('click', () => showLightbox((currentIndex + 1) % galleryImages.length));

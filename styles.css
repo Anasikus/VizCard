@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "cormorantgaramond", "cormorant garamond", "serif";
   background: #ffffff;
   color: #000000;
   line-height: 1.6;
@@ -17,8 +17,8 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(142, 166, 155, 0.9);
-  padding: 15px 30px;
+  background: rgba(142, 166, 155, 0.95);
+  padding: 10px 30px;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
@@ -26,31 +26,38 @@ header {
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: rgba(0,0,0,0.85); 
+  font-size: 1.8rem;        /* крупнее */
+  font-weight: 700;         /* жирнее */
+  color: white;             /* белый текст */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* лёгкая тень */
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 25px;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
-  transition: 0.3s;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.1rem; /* чуть крупнее */
+  transition: color 0.3s, transform 0.2s;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 nav ul li a:hover {
   color: black;
+  transform: translateY(-2px);
 }
 
+p {
+  font-size: 1.2rem;
+}
 .menu-toggle {
   display: none;
-  font-size: 2rem;
+  font-size: 2.2rem;
   cursor: pointer;
   color: white;
 }
@@ -71,7 +78,7 @@ nav ul li a:hover {
 
 .profile-img {
   width: 400px;
-  border-radius: 20%;
+  border-radius: 10%;
   margin-bottom: 20px;
   border: 4px solid rgb(142,166,155);
 }
@@ -245,6 +252,7 @@ footer {
   opacity: 0;
   transform: translateY(30px);
   animation: loadFade 1s ease forwards;
+  font-size: 1.2rem;
 }
 .fade-load:nth-child(1) { animation-delay: 0.2s; }
 .fade-load:nth-child(2) { animation-delay: 0.4s; }
@@ -364,35 +372,16 @@ img {
   margin-top: 5px;
   margin-bottom: 10px;
   color: rgb(60,80,70);
+  font-size: 1.5rem;
 }
 .facts-list {
   margin-top: 15px;
   padding-left: 20px;
+  font-size: 1.2rem;
 }
 .facts-list li {
   margin-bottom: 8px;
   line-height: 1.5;
-}
-
-/* 📱 Мобильное меню */
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: white;
-}
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    background: rgba(0,0,0,0.9);
-    position: absolute;
-    top: 60px;
-    right: 0;
-    padding: 20px;
-    display: none;
-  }
-  nav ul.show { display: flex; }
-  .menu-toggle { display: block; }
 }
 
 @keyframes fadeInUp {
@@ -400,20 +389,36 @@ img {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 📱 Адаптив */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 1.8rem; }
-  .hero p { font-size: 1rem; }
-  .profile-img { width: 180px; }
+/* Мобильное меню */
+@media (max-width: 850px) {
+  header {
+    justify-content: center;
+    padding: 0px;
+    padding-top: 10px;
+    gap: 10px;
+  }
+  .logo {
+    left: 20px;
+  }
+  .menu-toggle {
+    display: block;
+    right: 20px;
+  }
   nav ul {
     flex-direction: column;
-    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    background: rgba(142, 166, 155, 0.9);
     position: absolute;
-    top: 60px;
-    right: 0;
-    padding: 20px;
+    top: 100%;
+    left: 0;
+    width: 100%;
     display: none;
   }
-  nav ul.show { display: flex; }
-  .menu-toggle { display: block; }
+  nav ul.show {
+    display: flex;
+  }
+  nav ul li {
+    margin: 5px 0;
+  }
 }
