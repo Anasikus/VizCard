@@ -370,7 +370,7 @@ img {
 @media (max-width: 850px) {
   header {
     justify-content: center;
-    padding-top: 10px;
+    padding: 0px;
     gap: 10px;
   }
   .logo {
@@ -378,6 +378,9 @@ img {
   }
   .menu-toggle {
     display: block;
+  }
+  .fade-load{
+    font-size: 1rem;
   }
   nav ul {
     flex-direction: column;
@@ -404,14 +407,15 @@ img {
     padding: 40px 20px;
   }
   .profile-img {
-    width: 150px;
-    margin-bottom: 15px;
+    width: 250px;
+    margin-bottom: 0px;
   }
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
   .hero p {
     font-size: 1rem;
+    margin-bottom: 0px;
   }
   blockquote {
     font-size: 0.95rem;
@@ -426,6 +430,6 @@ img {
     font-size: 1.2rem;
   }
   .facts-list {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
