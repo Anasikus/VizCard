@@ -1,0 +1,374 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #ffffff;
+  color: #000000;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(142, 166, 155, 0.9);
+  padding: 15px 30px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(0,0,0,0.85); 
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  color: black;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content {
+  animation: fadeInUp 1.5s ease;
+}
+
+.profile-img {
+  width: 300px;
+  border-radius: 20%;
+  margin-bottom: 20px;
+  border: 4px solid rgb(142,166,155);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+blockquote {
+  font-style: italic;
+  color: rgb(142,166,155);
+  margin-bottom: 20px;
+}
+
+.btn {
+  background: rgb(142,166,155);
+  color: #000;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  position: relative;
+}
+section h2::after {
+  content: "";
+  width: 80px;
+  height: 3px;
+  background: rgb(142,166,155);
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 3px;
+}
+
+/* Carousel */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-track img {
+  width: 1000px;
+}
+
+.carousel-item {
+  min-width: 100%;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+  border: 2px solid rgb(142,166,155);
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgb(142,166,155);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+  background: rgba(142,166,155,0.1);
+  padding: 25px;
+  border-radius: 15px;
+}
+
+input, textarea {
+  padding: 12px;
+  border: 2px solid rgb(142,166,155);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: black;
+}
+
+button {
+  background: rgb(142,166,155);
+  color: #000;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: black;
+  color: white;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #ffffff;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+#social img {
+  width: 40px;
+  margin: 5px;
+  transition: transform 0.3s;
+}
+
+#social img:hover {
+  transform: scale(1.2);
+}
+
+/* Анимации */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Анимации при загрузке --- */
+.fade-load {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: loadFade 1s ease forwards;
+}
+.fade-load:nth-child(1) { animation-delay: 0.2s; }
+.fade-load:nth-child(2) { animation-delay: 0.4s; }
+.fade-load:nth-child(3) { animation-delay: 0.6s; }
+.fade-load:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes loadFade {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Универсальное изображение --- */
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* --- Карусель --- */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 800px;
+  margin: auto;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.carousel-item {
+  min-width: 100%;
+  text-align: center;
+}
+.carousel-item img {
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 2px solid rgb(142,166,155);
+}
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgb(142,166,155);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 50%;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* --- Галерея --- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  gap: 15px;
+}
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.gallery img:hover { transform: scale(1.05); }
+
+/* --- Лайтбокс --- */
+.lightbox {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index: 2000;
+}
+.lightbox-img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 12px;
+}
+.close {
+  position: absolute;
+  top: 20px; right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+.lightbox-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 0 40px;
+}
+
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Адаптив */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 1rem; }
+  .profile-img { width: 180px; }
+  nav ul {
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    padding: 20px;
+    display: none;
+  }
+  nav ul.show { display: flex; }
+  .menu-toggle { display: block; }
+}
