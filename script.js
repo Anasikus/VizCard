@@ -39,11 +39,13 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     autoSlide = setInterval(() => {
       index = (index + 1) % items.length;
       updateCarousel();
-    }, 3000);
+    }, 5000); // увеличено время до 5 секунд
   }
+
   function stopAutoSlide() {
     clearInterval(autoSlide);
   }
+
   function restartAutoSlide() {
     stopAutoSlide();
     startAutoSlide();
@@ -61,12 +63,12 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     restartAutoSlide();
   });
 
+  // Остановка при наведении курсора
   carousel.addEventListener('mouseenter', stopAutoSlide);
   carousel.addEventListener('mouseleave', startAutoSlide);
 
   startAutoSlide();
 });
-
 
 // --- Лайтбокс ---
 const galleryImages = document.querySelectorAll('.gallery img');
