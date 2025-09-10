@@ -137,7 +137,7 @@ section h2::after {
   border-radius: 3px;
 }
 
-/* Carousel */
+/* --- Карусель --- */
 .carousel {
   position: relative;
   overflow: hidden;
@@ -162,22 +162,52 @@ section h2::after {
   text-align: center;
   font-size: 1.2rem;
   border: 2px solid rgb(142,166,155);
+  transition: transform 0.3s;
+}
+.carousel:hover .carousel-item img {
+  transform: scale(1.05);
 }
 
-.prev, .next {
+/* Новые кнопки карусели */
+.carousel-prev,
+.carousel-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: rgb(142,166,155);
+  color: black;
   border: none;
   padding: 10px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 24px;
   border-radius: 50%;
+  opacity: 0.9;
+  transition: background 0.3s, color 0.3s;
+  z-index: 5;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: black;
+  color: white;
+}
+
+.carousel-prev { left: 10px; }
+.carousel-next { right: 10px; }
+
+/* --- Стили для кнопок лайтбокса (остались прежние) --- */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 2001;
+}
+.prev { left: 30px; }
+.next { right: 30px; }
 
 /* Form */
 form {
@@ -272,10 +302,6 @@ img {
 }
 
 /* --- Карусель --- */
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
 .carousel-item img {
   max-height: 500px;
   object-fit: contain;
@@ -333,6 +359,21 @@ img {
   font-size: 40px;
   cursor: pointer;
   padding: 0 40px;
+}
+
+/* Лайтбокс текст */
+.lightbox-caption {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+}
+.lightbox-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.lightbox-desc {
+  font-size: 1rem;
 }
 
 /* --- Факты --- */
