@@ -64,7 +64,7 @@ nav ul li a:hover {
 }
 
 p {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 
 .menu-toggle {
@@ -420,6 +420,9 @@ img {
 
 /* --- Мобильная адаптация --- */
 @media (max-width: 850px) {
+  p {
+    font-size: 1.1rem;
+  }
   header {
     justify-content: center;
     padding: 0px;
@@ -432,7 +435,7 @@ img {
     display: block;
   }
   .fade-load{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   nav ul {
     flex-direction: column;
@@ -466,7 +469,7 @@ img {
     font-size: 1.3rem;
   }
   .hero p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 0px;
   }
   blockquote {
