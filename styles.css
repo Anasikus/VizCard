@@ -92,6 +92,7 @@ p {
   width: 400px;
   border-radius: 10%;
   margin-bottom: 20px;
+  margin-top: 20px;
   border: 4px solid rgb(142,166,155);
 }
 
@@ -463,6 +464,7 @@ img {
   }
   .profile-img {
     width: 300px;
+    margin-top: 0px;
     margin-bottom: 0px;
   }
   .hero h1 {
